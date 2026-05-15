@@ -1,0 +1,45 @@
+{
+  "name": "LoungeScheduleCache",
+  "type": "object",
+  "properties": {
+    "shift_id": {
+      "type": "string",
+      "description": "Source Shift ID from MM Caf\u00e9 Club"
+    },
+    "staff_id": {
+      "type": "string"
+    },
+    "staff_name": {
+      "type": "string"
+    },
+    "staff_role": {
+      "type": "string",
+      "description": "Restaurant role from the parent staff profile"
+    },
+    "staff_image_url": {
+      "type": "string",
+      "description": "Staff profile picture from the parent staff profile"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "responsibility": {
+      "type": "string"
+    },
+    "synced_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "date",
+    "staff_name"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "MemberProfile",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "loyalty_points": {
+      "type": "number",
+      "default": 0
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Platinum"
+      ],
+      "default": "Bronze"
+    },
+    "redemption_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "gift_id": {
+            "type": "string"
+          },
+          "gift_name": {
+            "type": "string"
+          },
+          "points_used": {
+            "type": "number"
+          },
+          "redeemed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

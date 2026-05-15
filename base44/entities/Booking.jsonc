@@ -1,0 +1,107 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Booking date (YYYY-MM-DD)"
+    },
+    "time_slot": {
+      "type": "string",
+      "enum": [
+        "12:00-14:00",
+        "14:00-16:00",
+        "16:00-18:00",
+        "18:00-20:00",
+        "20:00-22:00"
+      ],
+      "description": "Time slot of the booking"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "party_size": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "arrived",
+        "no-show",
+        "cancelled"
+      ],
+      "default": "confirmed"
+    },
+    "member_id": {
+      "type": "string",
+      "description": "Optional linked MemberProfile id"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "time_slot",
+    "customer_name",
+    "customer_phone",
+    "party_size"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
